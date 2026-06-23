@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Поисковым роботам — полный доступ. Закрытых разделов нет.
+Sitemap: https://akb-dom-atbasar.kz/sitemap.xml
