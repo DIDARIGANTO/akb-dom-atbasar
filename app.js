@@ -254,6 +254,8 @@
     '.sec-head, .dash, .hero-claim, .diag, .bstack-row, .cold-panel, .region-map, .region-list, .terminal, .shop-frame, .starter, .contact-card, .map-wrap'
   );
   revealEls.forEach(function (el) { el.classList.add('reveal'); });
+  // also observe elements that already carry .reveal in the markup (e.g. .why-item)
+  var allRevealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     var revIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -263,9 +265,9 @@
         }
       });
     }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { revIo.observe(el); });
+    allRevealEls.forEach(function (el) { revIo.observe(el); });
   } else {
-    revealEls.forEach(function (el) { el.classList.add('in'); });
+    allRevealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
   // ════════════════════════════════════════════
