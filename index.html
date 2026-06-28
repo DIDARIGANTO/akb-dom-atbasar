@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Major+Mono+Display&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22UTF-8%22%3F%3E%0A%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2040%2040%22%20width%3D%2240%22%20height%3D%2240%22%3E%0A%20%20%3C%21--%20gray%20roof%20background%20--%3E%0A%20%20%3Cpath%20d%3D%22M%2022%206%20L%2036%2024%20L%2022%2024%20Z%22%20fill%3D%22%238E8D8D%22/%3E%0A%20%20%3C%21--%20red%20roof%20front%20--%3E%0A%20%20%3Cpath%20d%3D%22M%206%2024%20L%2018%206%20L%2030%2024%20Z%22%20fill%3D%22%23E5392F%22/%3E%0A%20%20%3C%21--%20vertical%20accent%20%28battery%20cell%29%20--%3E%0A%20%20%3Crect%20x%3D%2213%22%20y%3D%2222%22%20width%3D%222%22%20height%3D%226%22%20fill%3D%22%23E5392F%22/%3E%0A%20%20%3Crect%20x%3D%2221%22%20y%3D%2222%22%20width%3D%222%22%20height%3D%226%22%20fill%3D%22%238E8D8D%22/%3E%0A%3C/svg%3E%0A" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css?v=1" />
 
 <script type="application/ld+json">
 {
@@ -546,91 +546,33 @@
         <span class="sec-eyebrow-lbl">/ БЫСТРАЯ СВЯЗЬ</span>
       </div>
       <h2 class="sec-h2">
-        Ответьте на&nbsp;2&nbsp;вопроса —<br/>
-        <span class="ph">продолжим в WhatsApp.</span>
+        Расскажите ситуацию —<br/>
+        <span class="ph">отвечу и подскажу.</span>
       </h2>
-      <p class="sec-sub">Мини-подбор за&nbsp;пару кликов: соберём контекст и&nbsp;откроем WhatsApp с&nbsp;готовым сообщением. Цены и&nbsp;наличие подтверждаем лично — склад обновляется каждый день.</p>
+      <p class="sec-sub">Выберите вариант — отвечу прямо в&nbsp;чате и&nbsp;помогу продолжить в&nbsp;WhatsApp с&nbsp;готовым контекстом. Цены и&nbsp;наличие подтверждаем лично — склад обновляется каждый день.</p>
     </header>
 
-    <div class="diag">
+    <div class="terminal">
       <div class="terminal-head">
         <span class="term-dots">
           <i class="term-dot d1"></i>
           <i class="term-dot d2"></i>
           <i class="term-dot d3"></i>
         </span>
-        <span class="term-title mono">akb-dom · ассистент</span>
+        <span class="term-title mono">akb-dom@whatsapp ~ %</span>
         <span class="term-conn mono"><i class="led led-on led-blink"></i> ONLINE</span>
       </div>
-
-      <!-- Шаг 1 -->
-      <div class="diag-screen active" data-screen="1">
-        <div class="diag-q"><span class="diag-q-prefix mono">АКБ&nbsp;ДОМ&gt;</span> Здравствуйте! Что вас&nbsp;привело? Выберите ситуацию.</div>
-        <div class="diag-options diag-options-4">
-          <button type="button" class="diag-opt" data-next="2" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#search"/></svg></span>
-            <span class="opt-name">Подобрать АКБ</span>
-            <span class="opt-meta mono">ПОД МОЮ МАШИНУ</span>
-          </button>
-          <button type="button" class="diag-opt" data-next="2" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#bolt"/></svg></span>
-            <span class="opt-name">Не&nbsp;заводится</span>
-            <span class="opt-meta mono">СРОЧНО НУЖЕН АКБ</span>
-          </button>
-          <button type="button" class="diag-opt" data-next="2" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#bolt"/></svg></span>
-            <span class="opt-name">Готовлюсь к&nbsp;зиме</span>
-            <span class="opt-meta mono">ЗАПАС ПО CCA</span>
-          </button>
-          <button type="button" class="diag-opt" data-next="2" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#key"/></svg></span>
-            <span class="opt-name">Грузовой / спецтехника</span>
-            <span class="opt-meta mono">ТЯГОВЫЕ · 190 А·Ч</span>
-          </button>
+      <div class="terminal-body" id="terminal-body">
+        <div class="term-msg term-bot">
+          <span class="term-prompt mono">АКБ&nbsp;ДОМ&gt;</span>
+          <span class="term-text">Здравствуйте! Расскажите, что случилось — отвечу и&nbsp;помогу. Выберите ситуацию:</span>
         </div>
-      </div>
-
-      <!-- Шаг 2 -->
-      <div class="diag-screen" data-screen="2">
-        <div class="diag-q"><span class="diag-q-prefix mono">АКБ&nbsp;ДОМ&gt;</span> Понял. А&nbsp;какой у&nbsp;вас транспорт?</div>
-        <div class="diag-options diag-options-4">
-          <button type="button" class="diag-opt" data-next="3" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#check"/></svg></span>
-            <span class="opt-name">Легковая</span>
-            <span class="opt-meta mono">СЕДАН · ХЭТЧБЕК</span>
-          </button>
-          <button type="button" class="diag-opt" data-next="3" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#check"/></svg></span>
-            <span class="opt-name">Кроссовер / внедорожник</span>
-            <span class="opt-meta mono">SUV · ПИКАП</span>
-          </button>
-          <button type="button" class="diag-opt" data-next="3" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#key"/></svg></span>
-            <span class="opt-name">Грузовой / спецтехника</span>
-            <span class="opt-meta mono">КАМАЗ · МТЗ · АВТОБУС</span>
-          </button>
-          <button type="button" class="diag-opt" data-next="3" data-sound="select">
-            <span class="opt-icon"><svg width="22" height="22"><use href="#dot"/></svg></span>
-            <span class="opt-name">Не&nbsp;уверен(а)</span>
-            <span class="opt-meta mono">ПОДСКАЖИТЕ</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Шаг 3 — результат / WhatsApp -->
-      <div class="diag-screen diag-result" data-screen="3">
-        <div class="diag-q"><span class="diag-q-prefix mono">АКБ&nbsp;ДОМ&gt;</span> Отлично — по&nbsp;вашим ответам подберём 2–3&nbsp;варианта с&nbsp;гарантией и&nbsp;свежей датой. Продолжим в&nbsp;WhatsApp: подтвердим наличие, цену и&nbsp;придержим аккумулятор до&nbsp;приезда.</div>
-        <a class="term-opt term-opt-wa" href="https://wa.me/77002900503?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%9F%D1%80%D0%BE%D1%88%D1%91%D0%BB%20%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%D0%B5%20%D0%90%D0%9A%D0%91%20%D0%94%D0%BE%D0%BC.%20%D0%9F%D0%BE%D0%BC%D0%BE%D0%B3%D0%B8%D1%82%D0%B5%20%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C%20%D0%B0%D0%BA%D0%BA%D1%83%D0%BC%D1%83%D0%BB%D1%8F%D1%82%D0%BE%D1%80%20%E2%80%94%20%D0%BC%D0%BE%D1%8F%20%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D0%B0%20%28%D0%BC%D0%B0%D1%80%D0%BA%D0%B0%2C%20%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C%2C%20%D0%B3%D0%BE%D0%B4%29%3A%20" target="_blank" rel="noopener" data-sound="click">
-          <span class="opt-key mono">→</span>
-          <span>Продолжить в WhatsApp</span>
-          <svg width="16" height="16"><use href="#wa"/></svg>
-        </a>
-        <div class="result-foot">
-          <button type="button" class="restart-btn mono" id="restart-diag" data-sound="click">
-            <svg width="12" height="12" style="transform:rotate(180deg)"><use href="#arrow"/></svg>
-            НАЧАТЬ ЗАНОВО
-          </button>
-          <span class="result-note">Отвечаем за&nbsp;пару минут · ежедневно 08:00&nbsp;—&nbsp;20:00</span>
+        <div class="term-options" id="term-options">
+          <button type="button" class="term-opt" data-scenario="podbor" data-sound="select"><span class="opt-key mono">[1]</span><span>Подобрать АКБ под&nbsp;мою машину</span><svg width="14" height="14"><use href="#arrow-tr"/></svg></button>
+          <button type="button" class="term-opt" data-scenario="nezavod" data-sound="select"><span class="opt-key mono">[2]</span><span>Машина перестала заводиться</span><svg width="14" height="14"><use href="#arrow-tr"/></svg></button>
+          <button type="button" class="term-opt" data-scenario="zima" data-sound="select"><span class="opt-key mono">[3]</span><span>Готовлюсь к&nbsp;зиме / морозам</span><svg width="14" height="14"><use href="#arrow-tr"/></svg></button>
+          <button type="button" class="term-opt" data-scenario="truck" data-sound="select"><span class="opt-key mono">[4]</span><span>Нужен на&nbsp;грузовой / спецтехнику</span><svg width="14" height="14"><use href="#arrow-tr"/></svg></button>
+          <button type="button" class="term-opt" data-scenario="other" data-sound="select"><span class="opt-key mono">[5]</span><span>Другое — задать свой&nbsp;вопрос</span><svg width="14" height="14"><use href="#arrow-tr"/></svg></button>
         </div>
       </div>
     </div>
@@ -686,6 +628,6 @@
   <div class="lb-caption mono" id="lb-caption"></div>
 </div>
 
-<script src="app.js?v=2" defer></script>
+<script src="app.js?v=3" defer></script>
 </body>
 </html>

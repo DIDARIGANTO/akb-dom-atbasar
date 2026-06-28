@@ -313,4 +313,82 @@
     if (e.key === 'ArrowRight') nextLb(1);
     if (e.key === 'ArrowLeft') nextLb(-1);
   });
+
+  // ════════════════════════════════════════════
+  // CHAT DIALOG — выбор → ответ бота → WhatsApp
+  // ════════════════════════════════════════════
+  var chatBody = document.getElementById('terminal-body');
+  if (chatBody) {
+    var WA_BASE = 'https://wa.me/77002900503?text=';
+    var SCN = {
+      podbor: {
+        user: 'Подобрать АКБ под мою машину',
+        bot: 'Отлично! Подберу за пару минут — нужны марка, модель и год авто (или данные со старого аккумулятора). Учту ёмкость, пусковой ток и полярность.',
+        wa: 'Здравствуйте! Хочу подобрать аккумулятор. Моя машина (марка, модель, год): '
+      },
+      nezavod: {
+        user: 'Машина перестала заводиться',
+        bot: 'Похоже на аккумулятор. Если стартер крутит вяло или щёлкает, а фары тускнеют — батарея села. Бесплатно проверим напряжение и пусковой ток и при необходимости подберём замену на месте.',
+        wa: 'Здравствуйте! Машина перестала заводиться — нужна помощь по аккумулятору.'
+      },
+      zima: {
+        user: 'Готовлюсь к зиме / морозам',
+        bot: 'Правильно! В мороз двигателю нужно больше пускового тока (CCA). Подберу модель с запасом именно под вашу машину — заведётесь даже в −40.',
+        wa: 'Здравствуйте! Готовлюсь к зиме, нужен надёжный аккумулятор. Моя машина: '
+      },
+      truck: {
+        user: 'Нужен на грузовой / спецтехнику',
+        bot: 'Есть грузовые и тяговые: ZION 190 А·ч, BARS Truck и другие. Напишите тип техники (КамАЗ, МТЗ, автобус…) — подберу по пусковому току и ёмкости.',
+        wa: 'Здравствуйте! Нужен аккумулятор на грузовой/спецтехнику. Тип техники: '
+      },
+      other: {
+        user: 'Другое — задать свой вопрос',
+        bot: 'Конечно! Опишите вопрос — отвечу за пару минут и подскажу по наличию и цене.',
+        wa: 'Здравствуйте! У меня вопрос по аккумуляторам: '
+      }
+    };
+    var chatInitial = chatBody.innerHTML;
+    function chatEsc(s) { var d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+    function chatMsg(role, text) {
+      var d = document.createElement('div');
+      d.className = 'term-msg ' + (role === 'user' ? 'term-user' : 'term-bot');
+      var prompt = role === 'user' ? 'ВЫ&gt;' : 'АКБ&nbsp;ДОМ&gt;';
+      d.innerHTML = '<span class="term-prompt mono">' + prompt + '</span><span class="term-text">' + chatEsc(text) + '</span>';
+      chatBody.appendChild(d);
+      return d;
+    }
+    function chatPick(key) {
+      var sc = SCN[key];
+      if (!sc) return;
+      var opts = document.getElementById('term-options');
+      if (opts) opts.remove();
+      chatMsg('user', sc.user);
+      var typing = document.createElement('div');
+      typing.className = 'term-msg term-bot';
+      typing.innerHTML = '<span class="term-prompt mono">АКБ&nbsp;ДОМ&gt;</span><span class="term-typing"><span></span><span></span><span></span></span>';
+      chatBody.appendChild(typing);
+      setTimeout(function () {
+        typing.remove();
+        chatMsg('bot', sc.bot);
+        setTimeout(function () {
+          var wrap = document.createElement('div');
+          wrap.className = 'term-options';
+          wrap.innerHTML =
+            '<a class="term-opt term-opt-wa wa-pulse" href="' + WA_BASE + encodeURIComponent(sc.wa) + '" target="_blank" rel="noopener" data-sound="click">' +
+              '<span class="opt-key mono">WA</span><span>Продолжить в WhatsApp</span><svg width="16" height="16"><use href="#wa"/></svg>' +
+            '</a>' +
+            '<button type="button" class="term-opt" data-restart data-sound="click">' +
+              '<span class="opt-key mono">↺</span><span>Задать другой вопрос</span>' +
+            '</button>';
+          chatBody.appendChild(wrap);
+        }, 520);
+      }, 1050);
+    }
+    chatBody.addEventListener('click', function (e) {
+      var o = e.target.closest('[data-scenario]');
+      if (o) { chatPick(o.getAttribute('data-scenario')); return; }
+      var r = e.target.closest('[data-restart]');
+      if (r) { chatBody.innerHTML = chatInitial; }
+    });
+  }
 })();
