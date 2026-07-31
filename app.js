@@ -315,6 +315,39 @@
   });
 
   // ════════════════════════════════════════════
+  // MOBILE MENU
+  // ════════════════════════════════════════════
+  var burger = document.getElementById('burger');
+  var mnav = document.getElementById('mnav');
+  if (burger && mnav) {
+    var openMnav = function () {
+      mnav.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mnav-lock');
+      var first = mnav.querySelector('a');
+      if (first) first.focus();
+    };
+    var closeMnav = function () {
+      mnav.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mnav-lock');
+    };
+    burger.addEventListener('click', function () {
+      if (mnav.classList.contains('open')) closeMnav(); else openMnav();
+    });
+    mnav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) closeMnav();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mnav.classList.contains('open')) { closeMnav(); burger.focus(); }
+    });
+    // если экран стал широким — закрыть меню
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 900 && mnav.classList.contains('open')) closeMnav();
+    });
+  }
+
+  // ════════════════════════════════════════════
   // CHAT DIALOG — выбор → ответ бота → WhatsApp
   // ════════════════════════════════════════════
   var chatBody = document.getElementById('terminal-body');

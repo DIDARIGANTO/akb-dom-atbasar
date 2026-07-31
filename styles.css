@@ -1616,6 +1616,87 @@ a.cc-val:hover { color: var(--ph); }
 }
 .map-links a:hover strong { color: var(--ph); }
 
+/* ──────── МОБИЛЬНОЕ МЕНЮ ──────── */
+.burger {
+  display: none;
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: 5px;
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 0;
+  transition: border-color .2s;
+}
+.burger:hover, .burger[aria-expanded="true"] { border-color: var(--ph); }
+.burger span {
+  display: block;
+  width: 20px; height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform .28s ease, opacity .2s ease;
+}
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mnav {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(6,6,6,.97);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex; flex-direction: column;
+  padding: 84px var(--pad) 32px;
+  gap: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .26s ease, transform .26s ease, visibility .26s;
+  overflow-y: auto;
+}
+.mnav.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.mnav a.mnav-link {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-family: var(--f-sans);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+.mnav a.mnav-link:active { color: var(--ph); }
+.mnav a.mnav-link[aria-current="page"] { color: var(--ph); }
+.mnav a.mnav-link::after { content: '→'; opacity: .35; font-size: 16px; }
+.mnav-cta { display: grid; gap: 10px; margin-top: 26px; }
+.mnav-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 16px;
+  border-radius: 12px;
+  font-family: var(--f-sans);
+  font-weight: 700;
+  font-size: 15px;
+}
+.mnav-btn.call { background: var(--ph); color: #fff; }
+.mnav-btn.wa { background: var(--whatsapp); color: #fff; }
+.mnav-foot {
+  margin-top: 22px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--ink-3);
+  letter-spacing: .05em;
+}
+body.mnav-lock { overflow: hidden; }
+@media (max-width: 900px) {
+  .burger { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mnav, .burger span { transition: none; }
+}
+
 /* ──────── МАРШРУТ ──────── */
 .route-cta {
   border: 1px solid var(--line-2);
@@ -1780,7 +1861,7 @@ a.cc-val:hover { color: var(--ph); }
 }
 @media (max-width: 900px) {
   .nav { display: none; }
-  .sysbar-row { grid-template-columns: auto 1fr; gap: 16px; }
+  .sysbar-row { grid-template-columns: auto 1fr auto; gap: 12px; }
   .ticker-row { font-size: 9px; gap: 8px; }
   .hide-sm { display: none; }
   .section { padding: 90px 0; }

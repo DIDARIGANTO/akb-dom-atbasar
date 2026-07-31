@@ -26,7 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Major+Mono+Display&display=swap" rel="stylesheet" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<link rel="stylesheet" href="styles.css?v=3" />
+<link rel="stylesheet" href="styles.css?v=4" />
 
 <script type="application/ld+json">
 {
@@ -121,6 +121,7 @@
     <a href="tel:+77002900503" class="sys-cta mono" data-sound="click">
       8 700 290 05 03
     </a>
+    <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav" data-sound="click"><span></span><span></span><span></span></button>
   </div>
   <div class="ticker-bar mono" aria-hidden="true">
     <div class="container ticker-row">
@@ -136,6 +137,19 @@
     </div>
   </div>
 </header>
+
+<nav class="mnav" id="mnav" aria-label="Мобильное меню">
+  <a class="mnav-link" href="index.html" aria-current="page">Главная</a>
+  <a class="mnav-link" href="uslugi.html">Услуги</a>
+  <a class="mnav-link" href="katalog.html">Каталог</a>
+  <a class="mnav-link" href="rayon.html">Район</a>
+  <a class="mnav-link" href="kontakty.html">Контакты</a>
+  <div class="mnav-cta">
+    <a class="mnav-btn call" href="tel:+77002900503">Позвонить · 8 700 290 05 03</a>
+    <a class="mnav-btn wa" href="https://wa.me/77002900503" target="_blank" rel="noopener">Написать в WhatsApp</a>
+  </div>
+  <div class="mnav-foot mono">АТБАСАР · ЖЕЛЕЗНОДОРОЖНАЯ 46<br/>ЕЖЕДНЕВНО 08:00 — 20:00</div>
+</nav>
 
 <section class="hero" id="top">
   <div class="hero-grid container">
@@ -627,6 +641,6 @@
   <div class="lb-caption mono" id="lb-caption"></div>
 </div>
 
-<script src="app.js?v=3" defer></script>
+<script src="app.js?v=4" defer></script>
 </body>
 </html>
