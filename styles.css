@@ -222,7 +222,7 @@ button { font: inherit; cursor: none; background: none; border: 0; color: inheri
 
 /* ──────── SYSTEM BAR (HEADER) ──────── */
 .sysbar {
-  position: sticky; top: 0; z-index: 50;
+  position: sticky; top: 0; z-index: 70; /* выше .mnav (60), чтобы бургер оставался кликабельным для закрытия */
   background: rgba(10,10,10,.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -1690,6 +1690,8 @@ a.cc-val:hover { color: var(--ph); }
   letter-spacing: .05em;
 }
 body.mnav-lock { overflow: hidden; }
+/* плавающие кнопки не перекрывают открытое меню */
+body.mnav-lock .fcta { opacity: 0; pointer-events: none; }
 @media (max-width: 900px) {
   .burger { display: flex; }
 }
