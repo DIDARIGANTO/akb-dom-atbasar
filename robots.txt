@@ -28,4 +28,6 @@ Allow: /
 User-agent: YandexBot
 Allow: /
 
+# Карточка бизнеса для AI-ассистентов: https://akb-dom.kz/llms.txt
+
 Sitemap: https://akb-dom.kz/sitemap.xml
